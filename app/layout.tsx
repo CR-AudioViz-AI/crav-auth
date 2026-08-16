@@ -3,6 +3,11 @@
 import type { Metadata } from 'next'
 export const dynamic = 'force-dynamic'
 export const metadata: Metadata = {
+  // 2026-08-16: no metadataBase meant relative og:image paths resolved against
+  // the preview hostname, and no canonical meant a trailing slash, a query
+  // string and a preview host all competed for the same content.
+  metadataBase: new URL('https://auth.craudiovizai.com'),
+  alternates: { canonical: '/' },
   title: 'Javari Auth',
   description: 'Authentication and account management for all Javari apps.',
   openGraph: { title: 'Javari Auth', description: 'Authentication and account management for all Javari apps.', type: 'website' },
