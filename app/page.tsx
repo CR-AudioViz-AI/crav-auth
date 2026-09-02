@@ -1,7 +1,19 @@
 "use client";
 // app/page.tsx — Javari Auth · CR AudioViz AI · EIN 39-3646201 · May 2026
+//
+// 2026-09-03: the three tiles linked to /login, /profile and /security on THIS
+// host. This app has exactly one page — app/page.tsx — so all three returned 404,
+// and an ecosystem sweep with Javari Verify found them.
+//
+// Sign-in, profile and security settings are central: they live on
+// craudiovizai.com, backed by one session and one user record. A satellite
+// rendering its own copy would mean two places to change a password.
+//
+// Each destination was checked before being linked: /auth/login, /profile and
+// /settings/security all return 200. /auth/security does not exist, which is why
+// the security tile points at /settings/security instead of the obvious guess.
 import { useState } from "react";
-const T=[{"i": "\ud83d\udd11", "l": "Sign In", "d": "Secure login", "h": "/login"}, {"i": "\ud83d\udc64", "l": "Profile", "d": "Account management", "h": "/profile"}, {"i": "\ud83d\udd12", "l": "Security", "d": "Account security settings", "h": "/security"}, {"i": "\ud83c\udfe0", "l": "Platform", "d": "Back to Javari", "h": "https://javariai.com"}];
+const T=[{"i": "\ud83d\udd11", "l": "Sign In", "d": "Secure login", "h": "https://craudiovizai.com/auth/login"}, {"i": "\ud83d\udc64", "l": "Profile", "d": "Account management", "h": "https://craudiovizai.com/profile"}, {"i": "\ud83d\udd12", "l": "Security", "d": "Account security settings", "h": "https://craudiovizai.com/settings/security"}, {"i": "\ud83c\udfe0", "l": "Platform", "d": "Back to Javari", "h": "https://javariai.com"}];
 export default function P() {
   const [i,setI]=useState(""); const [o,setO]=useState(""); const [l,setL]=useState(false);
   async function go() { if(!i.trim())return; setL(true);setO("");
