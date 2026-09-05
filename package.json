@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "prebuild": "node scripts/audit-route-auth.mjs"
   },
   "dependencies": {
     "@craudioviz/platform-sdk": "git+https://github.com/CR-AudioViz-AI/platform-sdk.git",
